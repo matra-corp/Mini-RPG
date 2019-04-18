@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-18 14:31:16
+/* Smarty version 3.1.33, created on 2019-04-18 14:36:12
   from 'C:\UwAmp\www\Cours PHP POO\Mini-RPG\Mini-RPG\template\template.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb88a346049b0_56899253',
+  'unifunc' => 'content_5cb88b5c42e312_87004824',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '479d33b35580bcb5547e4acbcd9371fe4ef488ad' => 
     array (
       0 => 'C:\\UwAmp\\www\\Cours PHP POO\\Mini-RPG\\Mini-RPG\\template\\template.html',
-      1 => 1555590603,
+      1 => 1555598170,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb88a346049b0_56899253 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb88b5c42e312_87004824 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -31,10 +31,11 @@ function content_5cb88a346049b0_56899253 (Smarty_Internal_Template $_smarty_tpl)
 </head>
 <body>
 
-    <form action="script.php" method="POST">
+    <h3>Créer Personnage</h3>
+    <form action="index.php" method="POST">
         <label>Nom du nouveau personnage : </label>
         <input type="text" name="nomPerso" />
-        <button type="submit" name="creerPerso">Créer</button>
+        <button type="submit" name="creerPerso">Créer Personnage</button>
     </form>
 </body>
 </html><?php }

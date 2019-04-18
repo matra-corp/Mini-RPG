@@ -151,6 +151,9 @@
     
         <button type="submit" class="" name="envoiCombat"> Commencer le combat ! </button>
     </form>';
+    
+    // CREER PERSO ============================================================
+    
 
     // SMARTY =================================================================
 
