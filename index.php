@@ -154,7 +154,7 @@
 
     // SMARTY =================================================================
 
-    require ('libs/Smarty.class.php');
+    require ('Smarty/libs/Smarty.class.php');
 
     $smarty = new Smarty();
 
