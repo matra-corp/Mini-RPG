@@ -1,12 +1,10 @@
 <?php
-    // function chargerClass($classe)
-    // {
-    //     require 'class/'.$classe.'.php';
-    // }
-
-    // spl_autoload_register('chargerClass');
-
     require 'class/PersonnagesManager.php';
+    require ('Smarty/libs/Smarty.class.php');
+
+    $smarty = new Smarty();
+
+    $smarty->assign('nomPerso', "");
 
     try
     {
@@ -153,13 +151,19 @@
     </form>';
     
     // CREER PERSO ============================================================
-    
+    if ( isset( $_POST['creerPerso'] ) )
+    {
+        $nomPerso = htmlspecialchars( ucwords( strtolower( trim( $_POST['nomPerso'] ) ) ) );
+
+        if ( !empty( $nomPerso ) )
+        {
+            $smarty->assign('nomPerso', '<p>'.$nomPerso.'</p>');
+        }
+
+        unset( $_POST['nomPerso'] );
+    }
 
     // SMARTY =================================================================
-
-    require ('Smarty/libs/Smarty.class.php');
-
-    $smarty = new Smarty();
 
     // Assignation de variables
     $smarty->assign('persoManager', $persoManager);
