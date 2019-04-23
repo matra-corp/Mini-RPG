@@ -1,6 +1,7 @@
 <?php
     require 'Managers/PersonnagesManager.php';
     require 'Classes/Arme.php';
+    require 'Classes/EffetSort.php';
     require ('Smarty/libs/Smarty.class.php');
     
 
@@ -57,6 +58,9 @@
 
     $arme1 = new Arme;
     var_dump( $arme1 );
+
+    var_dump( $effet1 );
+    var_dump( $effet2 );
 
     // SMARTY (post) ==========================================================
 

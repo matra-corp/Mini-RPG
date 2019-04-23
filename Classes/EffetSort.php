@@ -15,6 +15,18 @@
         const DEXTERITE = 4;
     }
 
+    abstract class ELEMENT_EFFET
+    {
+        const FEU = 0;
+        const GLACE = 1;
+        const FOUDRE = 2;
+        const EAU = 3;
+        const TERRE = 4;
+        const VENT = 5;
+        const TENEBRE = 6;
+        const LUMIERE = 7;
+    }
+
     class EffetSort
     {
         private $_id;
@@ -25,6 +37,24 @@
         private $_magnitude;
         private $_duree;
         private $_element;
+
+        public function __construct( array $tabDonnees )
+        {
+            $this->hydrate( $tabDonnees );
+        }
+
+        public function hydrate( array $tabDonnees )
+        {
+            foreach ( $tabDonnees as $key => $value )
+            {
+                $method = 'set'.ucfirst( $key );
+
+                if ( method_exists( $this, $method ) )
+                {
+                    $this->$method( $value );
+                }
+            }
+        }
 
         // SET ================================================================
 
@@ -40,7 +70,7 @@
 
         public function setType( $type )
         {
-            $this->_$type = (string)$type;
+            $this->_type = (string)$type;
         }
 
         public function setChamps( $champs )
@@ -102,4 +132,25 @@
 
         // METHODES ===========================================================
     }
+
+    $effet1 = new EffetSort( 
+        array(
+            'nom' => 'restaurer_hp_50',
+            'type' => TYPE_EFFET::RESTAURER,
+            'champs' => CHAMPS_EFFET::HP,
+            'magnitude' => 50,
+            'duree' => 0
+        )
+    );
+
+    $effet2 = new EffetSort( 
+        array(
+            'nom' => 'endommager_hp_50_feu',
+            'type' => TYPE_EFFET::ENDOMMAGER,
+            'champs' => CHAMPS_EFFET::HP,
+            'magnitude' => 50,
+            'duree' => 0,
+            'element' => ELEMENT_EFFET::FEU
+        )
+    );
 ?>
