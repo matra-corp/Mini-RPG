@@ -1,5 +1,5 @@
 <?php
-    require 'Personnage.php';
+    require 'Classes/Personnage.php';
 
     class PersonnagesManager
     {

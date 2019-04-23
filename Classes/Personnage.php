@@ -1,16 +1,30 @@
 <?php
+    require 'Statistique.php';
+
     class Personnage
     {
-        private $_id = null;
+        private $_id;
         private $_nom;
-        private $_vie;
-        private $_degats;
+        private $_surnom;
         private $_niveau;
         private $_exp;
+
+        private $_stats;
+        private $_statsMax;
 
         public function __construct( array $tabDonnees )
         {
             $this->hydrate( $tabDonnees );
+
+            if ( array_key_exists( 'statsMax', $tabDonnees ) )
+            {
+                $this->_statsMax = new Statistique( $tabDonnees['statsMax'] );
+            }
+
+            if ( array_key_exists( 'stats', $tabDonnees ) )
+            {
+                $this->_stats = new Statistique( $tabDonnees['stats'] );
+            }
         }
 
         public function hydrate( array $tabDonnees )
@@ -38,19 +52,29 @@
             $this->_nom = (string)$nom;
         }
 
-        public function setVie( $vie )
+        public function setSurnom( $surnom )
         {
-            $this->_vie = (int)$vie;
+            $this->_surnom = (string)$surnom;
         }
 
-        public function setDegats( $degats )
+        public function setHp( $hp )
         {
-            $this->_degats = (int)$degats;
+            $this->_hp = (int)$hp;
+        }
+
+        public function setHpMax( $hp )
+        {
+            $this->_hpMax = (int)$hp;
         }
 
         public function setNiveau( $niveau )
         {
             $this->_niveau = (int)$niveau;
+        }
+
+        public function setExp( $exp )
+        {
+            $this->_exp = (int)$exp;
         }
 
         // GET ================================================================
@@ -65,14 +89,19 @@
             return $this->_nom;
         }
 
-        public function getVie()
+        public function getSurnom()
         {
-            return $this->_vie;
+            return $this->_surnom;
         }
 
-        public function getDegats()
+        public function getHp()
         {
-            return $this->_degats;
+            return $this->_hp;
+        }
+
+        public function getHpMax()
+        {
+            return $this->_hpMax;
         }
 
         public function getNiveau()
@@ -80,19 +109,55 @@
             return $this->_niveau;
         }
 
+        public function getExp()
+        {
+            return $this->_exp;
+        }
+
+        public function getStats()
+        {
+            return $this->_stats;
+        }
+
+        public function getStatsMax()
+        {
+            return $this->_statsMax;
+        }
+
         // OTHERS =============================================================
+
+        public function afficherStatut()
+        {
+            echo
+                '<p>'
+                .$this->getNom();
+            if ( $this->getSurnom() != null )
+            {
+                echo ' "'.$this->getSurnom().'"';
+            }
+            echo
+                ' HP : '.$this->getStats()->getHp().'/'
+                .$this->getStatsMax()->getHp()
+                .' MP : '.$this->getStats()->getMp().'/'
+                .$this->getStatsMax()->getMp()
+                .'</p>';
+
+        }
 
         public function presenterPerso()
         {
-            echo 'Je m\'appelle '.$this->getNom().'.<br/>';
-            echo 'Mon niveau est '.$this->getNiveau().'.<br/>';
-            echo 'J\'ai '.$this->getVie().' hp. <br/>';
-            echo 'Je fait '.$this->getDegats().' de dégats !<br/>';
-        }
-
-        public function modifierHp( $val )
-        {
-            $this->_hp += $val;
+            echo 
+                '<p>
+                    Je m\'appelle '.$this->getNom().'.<br/>';
+            if ( $this->getSurnom() != null )
+            {
+                echo 
+                    'On me surnomme "'.$this->getSurnom().'".<br/>';
+            }
+            echo
+                    'Mon niveau est '.$this->getNiveau().'.<br/>
+                    J\'ai '.$this->getStats()->getHp().' hp. <br/>
+                </p>';
         }
 
         public function modifierExperience( $val )
