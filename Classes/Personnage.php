@@ -1,5 +1,5 @@
 <?php
-    require 'Statistique.php';
+    require_once 'Statistique.php';
 
     class Personnage
     {

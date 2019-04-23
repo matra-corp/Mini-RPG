@@ -70,12 +70,12 @@
 
         public function setType( $type )
         {
-            $this->_type = (string)$type;
+            $this->_type = (int)$type;
         }
 
         public function setChamps( $champs )
         {
-            $this->_champs = (string)$champs;
+            $this->_champs = (int)$champs;
         }
 
         public function setMagnitude( $magnitude )
@@ -90,7 +90,7 @@
 
         public function setElement( $element )
         {
-            $this->_element = (string)$element;
+            $this->_element = (int)$element;
         }
 
         // GET ================================================================

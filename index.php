@@ -1,7 +1,7 @@
 <?php
     require 'Managers/PersonnagesManager.php';
     require 'Classes/Arme.php';
-    require 'Classes/EffetSort.php';
+    require 'Classes/Potion.php';
     require ('Smarty/libs/Smarty.class.php');
     
 
@@ -53,14 +53,28 @@
     $perso1->presenterPerso();
     $perso1->afficherStatut();
 
-    var_dump( $perso1 );
-    var_dump( $perso1->getStats()->getIntelligence() );
+    // var_dump( $perso1 );
+    // var_dump( $perso1->getStats()->getIntelligence() );
 
-    $arme1 = new Arme;
-    var_dump( $arme1 );
+    // $arme1 = new Arme;
+    // var_dump( $arme1 );
 
-    var_dump( $effet1 );
-    var_dump( $effet2 );
+    // var_dump( $effet1 );
+    // var_dump( $effet2 );
+
+    // var_dump( $sort1 );
+
+    $potion1 = new Potion(
+        array(
+            'nom' => 'Petite potion de soin',
+            'poids' => 1,
+            'valeur' => 10,
+            'categorie' => CATEGORIE_OBJET::POTION,
+            'nbUtilisations' => 1
+        )
+    );
+    $potion1->addSort( $sort1 );
+    var_dump( $potion1 );
 
     // SMARTY (post) ==========================================================
 

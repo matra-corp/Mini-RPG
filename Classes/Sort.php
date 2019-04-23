@@ -1,19 +1,13 @@
 <?php
-    abstract class CATEGORIE_OBJET
-    {
-        const ARME = 0;
-        const ARMURE = 1;
-        const POTION = 2;
-    }
+    require 'Classes/EffetSort.php';
 
-    class Objet
+    class Sort
     {
-        protected $_id;
-        protected $_nom;
-        protected $_poids;
-        protected $_valeur;
-
-        protected $_categorie;
+        private $_id;
+        private $_nom;
+        private $_coutMP;
+        
+        private $_tabEffets = [];
 
         public function __construct( array $tabDonnees )
         {
@@ -42,22 +36,12 @@
 
         public function setNom( $nom )
         {
-            $this->_nom = $nom;
+            $this->_nom = (string)$nom;
         }
 
-        public function setPoids( $poids )
+        public function setCoutMP( $coutMP )
         {
-            $this->_poids = $poids;
-        }
-
-        public function setValeur( $valeur )
-        {
-            $this->_valeur = $valeur;
-        }
-
-        public function setCategorie( $categorie )
-        {
-            $this->_categorie = $categorie;
+            $this->_coutMP = (int)$coutMP;
         }
 
         // GET ================================================================
@@ -66,25 +50,30 @@
         {
             return $this->_id;
         }
-
+       
         public function getNom()
         {
-            return $this->_nom;
+            return $this->_;
         }
 
-        public function getPoids()
+        public function get()
         {
-            return $this->_poids;
+            return $this->_;
         }
 
-        public function getValeur()
-        {
-            return $this->_valeur;
-        }
+        // METHODES ===========================================================
 
-        public function getCategorie()
+        public function addEffet( EffetSort $effet )
         {
-            return $this->_categorie;
+            $this->_tabEffets[] = $effet;
         }
     }
+
+    $sort1 = new Sort(
+        array(
+            'nom' => 'Soin',
+            'coutMP' => 10
+        )
+    );
+    $sort1->addEffet( $effet1 );
 ?>
